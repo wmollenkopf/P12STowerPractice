@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Towers</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    td {
+      padding: 10px;
+    }
+
+    button {
+      width: 100%;
+      height: 40px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="promptTitle"></h1>
+
+  <table>
+    <tr>
+      <td rowspan="2"><button onclick="buttonClicked(1)">Tower 1</button></td>
+      <td><button onclick="buttonClicked(2)">Tower North 2</button></td>
+      <td><button onclick="buttonClicked(3)">Tower North 3</button></td>
+    </tr>
+    <tr>
+      <td><button onclick="buttonClicked(5)">Tower South 2</button></td>
+      <td><button onclick="buttonClicked(6)">Tower South 3</button></td>
+    </tr>
+  </table>
+
+  <script>
+    const prompts = ["20s", "16s", "None", "1 Stack"];
+
+    function getRandomPrompt() {
+      const randomIndex = Math.floor(Math.random() * prompts.length);
+      return prompts[randomIndex];
+    }
+
+    function updatePage() {
+      const promptTitle = document.getElementById("promptTitle");
+      const pageTitle = document.getElementById("pageTitle");
+
+      const randomPrompt = getRandomPrompt();
+      promptTitle.textContent = randomPrompt;
+      pageTitle.textContent = randomPrompt;
+    }
+
+	function buttonClicked(buttonNumber) {
+  const promptTitle = document.getElementById("promptTitle").textContent;
+
+  if (buttonNumber === 5) {
+    // Logic for Tower South 2
+    if (promptTitle === "20s") {
+      // Correct action for Tower South 2 when prompted with "20s"
+      alert("Correct! Tower South 2 corresponds to 20s.");
+	  location.reload(); // Refresh the page
+    } else {
+      // Incorrect action for Tower South 2
+      alert("Incorrect! Tower South 2 does not correspond to the current prompt.");
+    }
+  } else if (buttonNumber === 1) {
+    // Logic for Tower 1
+    if (promptTitle === "16s" || promptTitle === "1 Stack") {
+      // Correct action for Button 2 when prompted with "16s"
+      alert("Correct! Tower 1 corresponds to 16s or 1 Stack.");
+	  location.reload(); // Refresh the page
+    } else {
+      // Incorrect action for Tower 1
+      alert("Incorrect! Tower 1does not correspond to the current prompt.");
+    }
+  } else if (buttonNumber === 2) {
+    // Logic for Tower North 2
+    if (promptTitle === "None") {
+      // Correct action for Tower North 2 when prompted with "None"
+      alert("Correct! Tower North 2 corresponds to None.");
+	  location.reload(); // Refresh the page
+    } else {
+      // Incorrect action for Tower North 2
+      alert("Incorrect! Tower North 2 does not correspond to the current prompt.");
+    }
+  } else {
+    // Handle other buttons if needed
+    alert("Invalid button clicked!");
+  }
+}
+
+
+    updatePage(); // Initial page setup
+
+  </script>
+
+</body>
+</html>
